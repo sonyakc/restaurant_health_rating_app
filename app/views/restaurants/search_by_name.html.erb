@@ -1,0 +1,10 @@
+<html>
+<title>Search by Name</title>
+
+<h3>Submit a rating code</h3>
+<%= form_tag restaurant_path, method: :get do %>
+    <p>
+      <%= text_field_tag :rating, params[:rating] %>
+      <%= submit_tag "Search" %>
+    </p>
+<% end %>
