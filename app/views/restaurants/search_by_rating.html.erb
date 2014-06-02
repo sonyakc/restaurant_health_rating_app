@@ -1,13 +1,11 @@
 <html>
 <title>Search by Rating</title>
 
-<body>
-    <h3>Submit a rating code</h3>
-    <%= form_tag restaurants_display_path, method: :get do %>
-        <p>
-          <%= text_field_tag :rating, params[:rating] %>
-          <%= submit_tag "Search" %>
-        </p>
-    <% end %>
-</body>
+<h3>Submit a rating code</h3>
+<%= form_tag restaurants_display_path, method: :get, remote: true do %>
+    <p>
+      <%= text_field_tag :rating, params[:rating] %>
+      <%= submit_tag "Search" %>
+    </p>
+<% end %>
 </html>

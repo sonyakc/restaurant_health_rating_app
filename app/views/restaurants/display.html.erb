@@ -11,12 +11,18 @@
       <tr>
         <th>Restaurant</th>
         <th>Grade</th>
+        <th>Borough</th>
+        <th>Zip Code</th>
+        <th>Phone #</th>
       </tr>
 
-      <% @restaurants.each do |key, array| %>
+      <% @restaurants.each_slice(10) do |key| %>
           <tr>
-            <td><%= array %></td>
-            <td><%= array %></td>
+            <td><%= key.first["dba"] %></td>
+            <td><%= key.first["currentgrade"] %></td>
+            <td><%= RestaurantsHelper.lookup_boro(key.first["boro"]) %></td>
+            <td><%= key.first["zipcode"] %></td>
+            <td><%= key.first["phone"] %></td>
           </tr>
       <% end %>
     </table>

@@ -8,19 +8,19 @@ include Mongo
     puts e.message
   end
 
-  def self.restaurant_by_rating rating
+  def self.restaurant_by_rating(rating)
     if !rating.nil?
       begin
-        @restaurants = @rating_collection.find({ currentgrade: rating.upcase }).to_a
+        @restaurants = @rating_collection.find({ currentgrade: rating.upcase })
       rescue
       end
     end
   end
 
-  def self.restaurant_details name
+  def self.restaurant_details(name)
     if !name.nil?
       begin
-        @restaurants = @rating_collection.find ({ dba: name.upcase }).to_a
+        @restaurants = @rating_collection.find({ dba: name.upcase })
       rescue
       end
     end
