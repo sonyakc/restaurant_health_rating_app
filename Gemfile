@@ -9,6 +9,7 @@ gem 'bson_ext'
 # gem 'mongoid', '~> 4.0.0.beta1'
 
 gem 'rest_client'
+gem 'chartkick'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'

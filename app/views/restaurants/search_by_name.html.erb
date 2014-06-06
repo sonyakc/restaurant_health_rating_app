@@ -5,7 +5,7 @@
 <%= form_tag restaurants_display_path, method: :get do %>
     <p>
       <%= text_field_tag :name, params[:name] %>
-      <%= submit_tag "Search" %>
+      <%= submit_tag "Search", :disable_with => "Please wait..." %>
     </p>
 <% end %>
 </html>

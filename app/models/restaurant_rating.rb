@@ -17,11 +17,19 @@ include Mongo
     end
   end
 
-  def self.restaurant_details(name)
+  def self.restaurant_by_name(name)
     if !name.nil?
       begin
         @restaurants = @rating_collection.find({ dba: name.upcase })
       rescue
+      end
+    end
+  end
+
+  def self.count_by_rating(rating)
+    if !rating.nil?
+      begin
+        @count = @rating_collection.find({currentgrade: rating }).count
       end
     end
   end
