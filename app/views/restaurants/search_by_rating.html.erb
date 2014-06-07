@@ -1,11 +1,11 @@
 <html>
-<title>Search by Rating</title>
+<title>Search by Grade</title>
 
-<h3>Submit a rating code</h3>
+<h3>Select a grade</h3>
 <%= form_tag restaurants_display_path, method: :get do %>
     <p>
       <%= text_field_tag :rating, params[:rating] %>
-      <%= submit_tag "Search", :disable_with => "Please wait..." %>
+      <%= submit_tag "Search", class: "btn btn-default btn-lg", data: { disable_with: "Please wait..." } %>
     </p>
 <% end %>
-</html>
+</html>a

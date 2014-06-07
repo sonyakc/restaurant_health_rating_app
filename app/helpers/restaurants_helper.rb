@@ -1,11 +1,11 @@
 module RestaurantsHelper
 
   def self.lookup_borough(key)
-    borough_map[key]
+    @@borough_map[key]
   end
 
   private
-    borough_map =
+    @@borough_map =
         {
          1 => "MANHATTAN",
          2 => "THE BRONX",

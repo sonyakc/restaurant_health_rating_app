@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'restaurants/search_by_name', to: 'restaurants#search_by_name', as: :name_search
 
+  get 'restaurants/search_by_zip', to: 'restaurants#search_by_zip', as: :zip_search
+
   get 'restaurants/statistics', to: 'restaurants#statistics', as: :statistics
 
   get 'restaurants/display'

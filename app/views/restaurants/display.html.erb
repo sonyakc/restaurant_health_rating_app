@@ -5,28 +5,30 @@
     <title>Search Results</title>
 </head>
 <body>
-    <h3>Restaurant Search Results: <%= @restaurants.count %></h3>
+    <h3>Restaurant Search Results</h3>
+    <h5>Total count: <%= @restaurants.count %></h5>
 
-    <table>
-      <tr>
-        <th>Restaurant</th>
-        <th>Grade</th>
-        <th>Borough</th>
-        <th>Zip Code</th>
-        <th>Phone #</th>
-      </tr>
-
-      <% @restaurants.each_slice(10) do |key| %>
+    <% if @restaurants.count > 0 %>
+        <table>
           <tr>
-            <td><%= key.first["dba"] %></td>
-            <td><%= key.first["currentgrade"] %></td>
-            <td><%= RestaurantsHelper.lookup_borough(key.first["boro"]) %></td>
-            <td><%= key.first["zipcode"] %></td>
-            <td><%= key.first["phone"] %></td>
+            <th>Restaurant</th>
+            <th>Grade</th>
+            <th>Borough</th>
+            <th>Zip Code</th>
+            <th>Phone</th>
           </tr>
-      <% end %>
-    </table>
 
+          <% @restaurants.each_slice(10) do |key| %>
+              <tr>
+                <td><%= key.first["dba"] %></td>
+                <td><%= key.first["currentgrade"] %></td>
+                <td><%= RestaurantsHelper.lookup_borough(key.first["boro"]) %></td>
+                <td><%= key.first["zipcode"] %></td>
+                <td><%= key.first["phone"] %></td>
+              </tr>
+          <% end %>
+        </table>
+    <% end %>
     <br>
 </body>
 </html>
