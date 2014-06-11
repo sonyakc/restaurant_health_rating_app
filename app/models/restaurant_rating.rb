@@ -20,7 +20,16 @@ include Mongo
   def self.restaurant_by_name(name)
     if !name.nil?
       begin
-        @restaurants = @rating_collection.find({ dba: name.upcase })
+        @restaurants = @rating_collection.find({ dba: /#{name.upcase}/ })
+      rescue
+      end
+    end
+  end
+
+  def self.restaurant_by_zip(zip)
+    if !zip.nil?
+      begin
+        @restaurants = @rating_collection.find({zipcode: zip})
       rescue
       end
     end

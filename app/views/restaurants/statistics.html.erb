@@ -1,11 +1,16 @@
-<h3>Visual Restaurant Health Data</h3>
+<div>
+  <h3>Restaurant Health Data and Statistics</h3>
+</div>
+<span class="glyphicon glyphicon-search"></span>
 
-<h5>By grade</h5>
+<div class="">
+<h5>Aggregated by grading</h5>
 <%= pie_chart [["A", @ratings_map["A"]],
                ["B", @ratings_map["B"]],
                ["C", @ratings_map["C"]],
                ["Z", @ratings_map["Z"]]] %>
 
-<h5>By zip code</h5>
+</div>
+<!--<h5>By zip code</h5>-->
 
-<h5>By borough</h5>
+<!--<h5>By borough</h5>-->

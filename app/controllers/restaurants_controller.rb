@@ -17,6 +17,8 @@ class RestaurantsController < ApplicationController
       @restaurants = RestaurantRating.restaurant_by_rating(params[:rating])
     elsif !params[:name].nil?
       @restaurants = RestaurantRating.restaurant_by_name(params[:name])
+    elsif
+      @restaurants = RestaurantRating.restaurant_by_zip(params[:zip])
     end
   end
 
@@ -24,5 +26,8 @@ class RestaurantsController < ApplicationController
   end
 
   def search_by_name
+  end
+
+  def search_by_zip
   end
 end

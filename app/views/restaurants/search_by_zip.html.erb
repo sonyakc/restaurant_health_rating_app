@@ -1,10 +1,10 @@
 <html>
-<title>Search by Name</title>
+<title>Search by Zip</title>
 
-<h3>What restaurant are you looking for?</h3>
+<h3>Lookup by zip code</h3>
 <%= form_tag restaurants_display_path, method: :get do %>
     <p>
-      <%= text_field_tag :name, params[:name] %>
+      <%= text_field_tag :zip, params[:zip] %>
       <%= submit_tag "Search", class: "btn btn-default btn-lg", data: { disable_with: "Please wait..." } %>
     </p>
 <% end %>

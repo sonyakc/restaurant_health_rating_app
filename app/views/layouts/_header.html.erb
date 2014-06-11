@@ -1,0 +1,18 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <nav class="nav pull-left">
+        <%= link_to "Resto-Health", root_path, id: "logo" %>
+      </nav>
+      <nav>
+        <ul class= "nav pull-left">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Lookup by Grade", rating_search_path %></li>
+          <li><%= link_to "Name", name_search_path %></li>
+          <li><%= link_to "Zip Code", zip_search_path %></li>
+          <li><%= link_to "View Charts", statistics_path %></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
