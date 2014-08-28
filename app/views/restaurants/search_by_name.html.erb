@@ -5,7 +5,8 @@
 <%= form_tag restaurants_display_path, method: :get do %>
     <p>
       <%= text_field_tag :name, params[:name] %>
-      <%= submit_tag "Search", class: "btn btn-default btn-lg", data: { disable_with: "Please wait..." } %>
+      <%= submit_tag "Search", class: "btn btn-default btn-lg", data: { disable_with: "Please wait..." },
+        onclick: 'mixpanel.track("Submitted search by restaurant name", { "name" : params[:name] });'%>
     </p>
 <% end %>
 </html>

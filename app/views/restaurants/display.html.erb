@@ -1,34 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title>Search Results</title>
+  <meta charset="UTF-8">
+  <title>Search Results</title>
 </head>
 <body>
-    <h3>Restaurant Search Results</h3>
-    <h5>Total count: <%= @restaurants.count %></h5>
+<h3>Restaurant Search Results</h3>
 
-    <% if @restaurants.count > 0 %>
-        <table>
+<% if !params["zip"].nil? %>
+    <p>Aggregated breakdown by grade for zipcode: <%= params[:zip] %></p>
+    <table>
+      <%= pie_chart [["A", @ratings_zip_map["A"]],
+                     ["B", @ratings_zip_map["B"]],
+                     ["C", @ratings_zip_map["C"]],
+                     ["Z", @ratings_zip_map["Z"]]] %>
+<% end %>
+</table>
+<hr/>
+<h5>Total count: <%= @restaurants.count %></h5>
+<% if @restaurants.count > 0 %>
+    <table class="table table-striped table-bordered dataTable" id="healthResults">
+      <thead>
+      <tr>
+        <th>Restaurant (click to view Yelp ratings)</th>
+        <th>Grade</th>
+        <th>Borough</th>
+        <th>Zip Code</th>
+        <th>Phone</th>
+        <th>Score</th>
+        <th>Grade Date</th>
+        <th>Record Date</th>
+      </tr>
+      </thead>
+
+
+      <% @restaurants.each_slice(10) do |key| %>
+          <tbody>
           <tr>
-            <th>Restaurant</th>
-            <th>Grade</th>
-            <th>Borough</th>
-            <th>Zip Code</th>
-            <th>Phone</th>
+            <td><%= link_to key.first["dba"], yelp_details_path(id: key.first["dba"],
+                                                                zip: key.first["zipcode"]) %></td>
+            <td><%= key.first["currentgrade"] %></td>
+            <td><%= RestaurantsHelper.lookup_borough(key.first["boro"]) %></td>
+            <td><%= key.first["zipcode"] %></td>
+            <td><%= number_to_phone(key.first["phone"], area_code: true) %></td>
+            <td><%= key.first["score"] %></td>
+            <td><%= key.first["gradedate"] %></td>
+            <td><%= key.first["recorddate"] %></td>
           </tr>
-
-          <% @restaurants.each_slice(10) do |key| %>
-              <tr>
-                <td><%= key.first["dba"] %></td>
-                <td><%= key.first["currentgrade"] %></td>
-                <td><%= RestaurantsHelper.lookup_borough(key.first["boro"]) %></td>
-                <td><%= key.first["zipcode"] %></td>
-                <td><%= key.first["phone"] %></td>
-              </tr>
-          <% end %>
-        </table>
-    <% end %>
-    <br>
+          </tbody>
+      <% end %>
+    </table>
+<% end %>
+<br>
 </body>
 </html>

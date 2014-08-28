@@ -1,4 +1,7 @@
 module RestaurantsHelper
+  include Yelp::V1::Review::Request
+
+  @@client = Yelp::Client.new
 
   def self.lookup_borough(key)
     @@borough_map[key]

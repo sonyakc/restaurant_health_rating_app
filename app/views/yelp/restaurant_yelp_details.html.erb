@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Yelp results for <%=  @business_details['name'] %></title>
+</head>
+<body>
+
+<h3>Yelp results for <%= link_to @business_details['name'], @business_details['url']  %></h3>
+
+<table class="table table-striped table-bordered" id="yelpResults">
+      <thead>
+      <tr>
+        <th>Rating</th>
+        <th>Snippet Text</th>
+        <th>Categories</th>
+      </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><%= @business_details['rating'] %></td>
+            <td><%= @business_details['snippet_text'] %></td>
+            <td>
+              <% @business_details['categories'].each { |x| %>
+                <%= x[0] + "\n" %>
+              <% } %>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+<br>
+</body>
+</html>
